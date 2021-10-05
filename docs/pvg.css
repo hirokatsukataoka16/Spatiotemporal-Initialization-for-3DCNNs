@@ -1,0 +1,161 @@
+@font-face {
+   font-family: 'PVGNTLightFont';
+   src: url('/web/font/neutratext-booksc-webfont.eot');
+}
+@font-face {
+    font-family: 'PVGCGFont';
+    src: url('/web/font/centurygothic-webfont.eot');
+    src: local('CenturyGothic'), url('/web/font/centurygothic-webfont.svg#CenturyGothic') format('svg');
+    src: local('CenturyGothic'), url('/web/font/centurygothic-webfont.ttf') format('truetype');
+}
+
+body, td {
+  font-family: "PVGCGFont",Calibri,Arial;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;  
+}
+
+b {
+	font-family: Arial;
+}
+
+h1 {
+	font-family: Arial;
+}
+
+h2 {
+	font-family: Arial;
+	font-size: 18pt;
+}
+
+body
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+	box-sizing:border-box;
+	max-width: 980px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	background-image:url('');
+	background-repeat:repeat-x;
+	
+}
+.icon {
+	vertical-align: bottom;
+	margin-bottom: 10px;
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+}
+.icon img{
+    margin-left: auto;
+    margin-right: auto;			
+	height: 40px;
+	display: block;
+}
+
+#header {
+	width: 100%;
+	height: 100px;
+	font-weight: 300;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-image: url('');
+	background-repeat: no-repeat;
+	background-position: auto;
+	background-size: cover;
+}
+
+#headertext {
+	font-size: 26px;
+	font-weight: 400;
+	margin-top: 50px;
+	margin-left: 220px;
+}
+
+#projects div {
+	vertical-align: text-top;
+	width: 160px;
+	height: 150px;
+	display: inline-block;
+	text-align:center;	
+}
+
+#projects div img{
+	display: inline;
+	max-height: 90px !important;
+}
+
+#people div {
+	vertical-align: text-top;
+	width: 160px;
+	height: 170px;
+	display: inline-block;
+	text-align:center;	
+}
+
+#people div img{
+	display: inline;
+	max-height: 110px !important;
+}
+
+#pubList tr td:first-child{
+  width: 120px;
+  height: 80px;
+  text-align: center;
+}
+#pubList tr td:last-child{
+  padding-left: 20px;
+}
+#pubList tr td img{
+  max-width: 120px !important;
+  max-height: 80px !important; 
+}
+
+a:visited, a:link {
+	text-decoration: none;
+	color: #000000;
+	border-color: #CCCCCC;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+}
+a:hover {
+	color:#DE382D;
+	font-weight: bold;
+}
+
+.delta .btn{display:inline-block;margin:6px;font-size:inherit;line-height:1.42;padding:0.6em 1.6em;font-weight:normal;border-width:1px;border-style:solid;background:transparent;border-radius:0.25em;cursor:pointer;font-family:"Booster Next FY", "Avenir Next", Avenir, sans-serif;user-select:none;vertical-align:bottom;background-color:transparent;border-width:1px;border-style:solid;box-shadow:0 1.31em 0 0 rgba(255, 255, 255, 0.1) inset;transition:box-shadow 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), border-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1)}
+.delta .btn:active{box-shadow:0 1.31em 0.2em 0 rgba(0, 0, 0, 0.08) inset;transition:box-shadow 0.1s}
+ 
+.delta .btn-primary{background-color:#52C11F;background-image:linear-gradient(-45deg, #52C11F, #7ccc14);color:#E6EAEF;border-top-color:#8ae660;border-left-color:#5ddb23;border-right-color:#5ddb23;border-bottom-color:#2d6911}
+.delta .btn-primary:hover{background-image:linear-gradient(-45deg, #56ca20, #82d515)}
+.delta .btn-primary:active{color:#2d6911;text-shadow:0 1px 0 rgba(255, 255, 255, 0.2);background-color:#4eb81e;background-image:linear-gradient(-45deg, #4eb81e, #76c313);border-top-color:#2d6911;border-left-color:#47a71b;border-right-color:#47a71b;border-bottom-color:#47a71b}
+
+.delta .btn-gray {
+  background-color: #6D6F7F;
+  background-image: linear-gradient(-45deg, #6D6F7F, #61708b);
+  color: #E6EAEF;
+  border-top-color: #a2a4b0;
+  border-left-color: #7c7e8f;
+  border-right-color: #7c7e8f;
+  border-bottom-color: #3e3f48;
+}
+.delta .btn-gray:hover {
+  background-image: linear-gradient(-45deg, #727484, #657591);
+}
+.delta .btn-gray:active {
+  color: #3e3f48;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  background-color: #686a7a;
+  background-image: linear-gradient(-45deg, #686a7a, #5d6b85);
+  border-top-color: #3e3f48;
+  border-left-color: #5f616f;
+  border-right-color: #5f616f;
+  border-bottom-color: #5f616f;
+}

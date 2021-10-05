@@ -1,0 +1,117 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spatiotemporal Initialization for 3D CNNs with Generated Motion Patterns</title>
+    <link rel="stylesheet" type="text/css" href="./pvg.css">
+    <link rel="shortcut icon" type="image/png" href="./img/cc_logo_1_crop.png">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+</head>
+
+<body>
+<script type="text/javascript" src="./header.js"></script>
+
+<style>
+a.myclass {
+    color:#DE382D;
+    text-decoration: underline
+}
+</style>
+
+<style>
+a.link {
+    text-decoration: underline
+}
+</style>
+
+
+<h1 align="center" style="font-size: 30pt;"><b>Spatiotemporal Initialization for 3D CNNs with Generated Motion Patterns</b></h1><br/>
+
+<center>
+    <font color="#c7254e">Winter Conference on Applications of Computer Vision (WACV) 2022</font><br><br>
+    <a href="http://hirokatsukataoka.net/" class="">Hirokatsu Kataoka</a><sup>1</sup> &emsp; Eisuke Yamagata<sup>2</sup>　&emsp; <a href="https://kenshohara.github.io/index.html" class="">Kensho Hara</a><sup>1</sup> &emsp; Ryusuke Hayashi<sup>1</sup> &emsp; <a href="https://mmai.tech/" class="">Nakamasa Inoue</a><sup>2</sup><br>
+    1: AIST &emsp; 2: TITech<br><br>
+    
+    <section class="delta">
+        <div class="container">
+            <a href=""><button class="btn btn-gray">Paper</button></a>
+            <a href=""><button class="btn btn-gray">Code</button></a>
+            <!--<a href="">Oral</button class="btn btn-gray"></a>
+            <a href=""><button class="btn btn-gray">Poster</button></a>
+            <a href=""><button class="btn btn-gray">Supp</button></a>-->
+        </div>
+    </section>
+    <br><br>
+    <img src="./img/x001_y001.gif" style="width: 31%;"/>
+    <img src="./img/x001_y024.gif" style="width: 31%;"/>
+    <img src="./img/x024_y024.gif" style="width: 31%;"/><br>
+</center>
+
+<br>
+<h2>Abstract</h2>
+<p>
+The paper proposes a framework of Formula-Driven Supervised Learning (FDSL) for spatiotemporal initialization. Our FDSL approach enables to automatically and simultaneously generate motion patterns and their video labels with a simple formula which is based on Perlin noise. We designed a dataset of generated motion patterns adequate for the 3D convolutional neural networks (CNNs) to learn a better basis set of natural videos. The constructed Video Perlin Noise (VPN) dataset can be applied to initialize a model before pre-training with large-scale video datasets such as Kinetics-400/700, to enhance target task performance. Our spatiotemporal initialization with VPN dataset (VPN initialization) outperforms the previous initialization method with the inflated 3D ConvNet (I3D) using 2D ImageNet dataset. Our proposed method increased the top-1 video-level accuracy of Kinetics-400 pre-trained model on {Kinetics-400, UCF-101, HMDB-51, ActivityNet} datasets. Especially, the proposed method increased the performance rate of Kinetics-400 pre-trained model by 10.3 pt on ActivityNet. We also report that the relative performance improvements from the baseline are greater in 3D CNNs rather than other models. Our VPN initialization mainly helps to enhance the performance in spatiotemporal 3D kernels.
+</p>
+
+<br>
+<h2>Formula-driven Dataset</h2>
+The proposed dataset is inspired by the knowledge of FDSL. Especially, we considered that the Perlin noise must be applied to construct video dataset as the original usage of animation generation. The proper initialization using a synthetic video dataset designed to effectively learn a visual representation must be useful for spatiotemporal 3D CNNs to improve the performance of video recognition. Here, we use Perlin noise in order to generate motion patterns with minimal orientations and directions but various spatiotemporal frequencies based on a simple algorithm.
+Perlin noise is capable of generating natural moving textures based on the frequency only in the x, y, and t dimensions that are complex enough to give a proper initial representation for a network to further learn the target video recognition tasks.
+<br><br><br>
+<center>
+        <img src="./img/teaser.png" style="width: 90%;"/><br><br>
+</center>
+
+
+<br>
+<h2>Framework</h2>
+The flow of the proposed network training procedure (see also the following figure). 
+Video Perlin Noise(VPN) dataset consists of dynamic random textures determined only by frequencies in space and time dimensions. The dataset predispose a CNN to classify motion categories defined by the frequency characteristics of the noises (VPN initialization).
+The feature representation through the VPN initialization and Kinetics pre-training shows a more well-organized structure and clearer modulation in spatiotemporal dimensions. In fact, the video representation with VPN->Kinetics-400 is changed from those with the simple Kinetics-400 pre-training and acquires direction selectivity.
+<br><br><br>
+<center>
+        <img src="./img/framework.png" style="width: 80%;"/>
+</center>
+
+<br><br><br>
+<h2>Experimental Results</h2>
+
+The left figure illustrates the accuracy transitions of the Kinetics-400 dataset training from scratch and training with ImageNet inflation and with our VPN initialization.
+In the right figure, 3D and (2+1)D CNNs performances on Kinetics-400 recognition as function of #layer on Kinetics-400. The VPN initialization relatively enhances the performance of 3D ResNets more compared with those of (2+1)D ResNets. The accuracy gap is up to +4.5 pt.
+<br><br>
+<center>
+        <img src="./img/acc_transfer.png" style="width: 48%;"/>
+        <img src="./img/vpn_r3d_r2p1d.png" style="width: 48%;"/>
+</center>
+
+
+<br><br><br>
+<h2>Visualization</h2>
+
+The figures illustrates the weight of each convolutional kernel at the first layer in 3D-ResNet-50 with various initialization and pre-training conditions. Figures (a) and (b) are convolutional filters initialized with high-freq and low-freq VPN datasets respectively. These panels indicate that the acquired weight pattern in the model trained with a low-spatial-freq VPN is coarser than those in the model trained with a high-spatial-freq VPN, as expected. In our experimental results, the low-freq VPN dataset performed well. Moreover, the three different initialization and pre-training combinations, Kinetics-400 (K4) (Figure (d)), I3D->K4 (Figure (e)), and VPN->K4 (Figure (f)) show different feature representations at the first convolutional layer. Though I3D->K4 maintains ImageNet-like feature representations (Figure (c)), our VPN->K4 inherits the K4 filters while showing a more well-organized structure and clearer modulation in both the space and time dimensions, showing similar orientation and direction selectivity as neurons in area V1.
+<br>
+<center>
+        <img src="./img/stmaps.png" style="width: 100%;"/>
+</center>
+
+<br>
+<h2>Citation</h2>
+@inproceedings{KataokaWACV2022,<br>
+&emsp;author     = {Kataoka, Hirokatsu and Yamagata, Eisuke and Hara, Kensho and Hayashi, Ryusuke and Inoue, Nakamasa},<br>
+&emsp;title      = {Spatiotemporal Initialization for 3D CNNs with Generated Motion Patterns},<br>
+&emsp;journal    = {Winter Conference on Applications of Computer Vision (WACV)},<br>
+&emsp;year       = {2022}<br>
+}
+<br><br>
+
+<h2>Acknowledgement</h2></a>
+<ul>
+    <!--<li>This paper is based on results obtained from a project, JPNP20006, commissioned by the New Energy and Industrial Technology Development Organization (NEDO).</li>
+    <li> This work was supported by JSPS KAKENHI Grant Number JP19H01134, 20H04597, 19H04200, and JST Moonshot Research & Development Program.</li>-->
+    <li> Computational resource of AI Bridging Cloud Infrastructure (ABCI) provided by National Institute of Advanced Industrial Science and Technology (AIST) was used.</li>
+</ul>
+
+<br><br><br>
+<script type="text/javascript" src="./footer.js"></script>
+</body></html>
